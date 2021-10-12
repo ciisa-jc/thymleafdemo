@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sumas</title>
+<style>
+#ex1 {
+	margin-top: 50px;
+	margin-bottom: 100px;
+	
+	overflow-x: scroll;
+	padding: 2px;
+}
+
+#ex2 {
+	font-size: 2.5em;;
+}
+
+.par {
+	padding: 1em;
+	background-color: #DCDCDC;
+}
+
+.impar {
+	padding: 1em;
+	background-color: #D3D3D3;
+}
+
+.areaDeSuma {
+	width: 50px;
+}
+
+
+</style>
+</head>
+<body onload="main()">
+
+
+	<p>	Recta numérica </p>
+	<div id="ex1">
+		<div id="ex2"></div>
+	</div>
+	<div class="areaDeSuma">
+		<div id="minuendo"> </div>
+		<hr>
+		<div id="sustraendo">+</div>
+	</div>
+	
+	<script>
+	
+
+	
+		function main() {
+			myScript();
+		}
+		
+		function myScript() {
+			for (i = 0; i <= 100; i++) {
+
+				if ((i % 2) == 0) {
+										
+					var parSpan = document.createElement("span");
+					parSpan.setAttribute("class","par");
+					parSpan.setAttribute("id","numero" + i);
+					parSpan.textContent = i;
+					parSpan.onclick = function () {
+						getNumber(this);
+					};
+										
+					document.getElementById("ex2").appendChild(parSpan);					
+				
+				} else {
+					var parSpan = document.createElement("span");
+					parSpan.setAttribute("class","impar");
+					parSpan.setAttribute("id","numero" + i);
+					parSpan.textContent = i;
+					parSpan.onclick = function () {
+						getNumber(this);
+					};
+					
+					document.getElementById("ex2").appendChild(parSpan);
+				}
+			}
+			
+		}
+		
+		function getNumber(o) {
+			console.log(o.innerHTML);
+			
+			var htmlstring = document.getElementById("minuendo").innerHTML;
+			htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,'');
+			
+			if (htmlstring == '') {
+				document.getElementById("minuendo").innerHTML = o.innerHTML;
+			} else {
+				document.getElementById("sustraendo").innerHTML += o.innerHTML;
+				
+			}
+			
+		}	
+	</script>
+</body>
+</html>
