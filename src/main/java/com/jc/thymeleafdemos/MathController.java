@@ -16,6 +16,6 @@ public class MathController {
 	@GetMapping("/mat/aritmetica/sumas")
 	public String sumas(Model model) {
 		model.addAttribute("message", "Hola alumno");
-		return "/mat/aritmetica/sumas";
+		return "mat/aritmetica/sumas";
 	}
 }
